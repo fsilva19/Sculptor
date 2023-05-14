@@ -18,6 +18,9 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz){
         }
     }
 
+
+}
+Sculptor::~Sculptor(){
     for(int i=0; i<nx; i++){
         for(int j=0; j<ny; j++){
             delete []v[i][j]; //deleta a memória de 3 dimensões
@@ -33,7 +36,7 @@ void Sculptor::setColor(float r, float g, float b, float a){
     b = b;
     a = a;
 }
-void putVoxel(int x, int y, int z){
+void Sculptor::putVoxel(int x, int y, int z){
     // A função putVoxel da classe Sculptor é responsável por ativar (ou "colocar") um voxel
     // na posição especificada da matriz 3D. Ela marca o voxel como visível (atributo show definido como true) e define
             // as propriedades de cor (atributos r, g, b) e transparência (atributo a) desse voxel.
@@ -45,7 +48,7 @@ void putVoxel(int x, int y, int z){
         v[x][y][z].show = true;
     }
 }
-void putBox(int x0, int x1, int y0, int y1, int z0, int z1){
+void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
     // A função putBox é responsável por criar uma caixa de voxels visíveis dentro da escultura.
             // Ela recebe as coordenadas dos vértices opostos da caixa (x0, x1, y0, y1, z0, z1)
             // e ativa os voxels correspondentes nessa região, ou seja, os voxels que estão dentro ou na superfície da caixa.
@@ -57,7 +60,7 @@ void putBox(int x0, int x1, int y0, int y1, int z0, int z1){
         }
     }
 }
-void writeOFF(const char* filename){
+void Sculptor::writeOFF(const char* filename){
     ofstream file;
     file.open(filename);
 
