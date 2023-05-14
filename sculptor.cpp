@@ -130,28 +130,70 @@ void Sculptor::writeOFF(const char* filename){
                             float y1 = y + 0.5;
                             float z1 = z + 0.5;
 
-                            file << x0 << " " << y0 << " " << z0 << std::endl;
-                            file << x1 << " " << y0 << " " << z0 << std::endl;
-                            file << x1 << " " << y1 << " " << z0 << std::endl;
-                            file << x0 << " " << y1 << " " << z0 << std::endl;
-                            file << x0 << " " << y0 << " " << z1 << std::endl;
-                            file << x1 << " " << y0 << " " << z1 << std::endl;
-                            file << x1 << " " << y1 << " " << z1 << std::endl;
-                            file << x0 << " " << y1 << " " << z1 << std::endl;
+
+                            file << x0 << " " << y1 << " " << z0 << std::endl; //se
+                            file << x0 << " " << y0 << " " << z0 << std::endl; //ie
+                            file << x1 << " " << y0 << " " << z0 << std::endl; //id
+                            file << x1 << " " << y1 << " " << z0 << std::endl; //sd
+                            file << x0 << " " << y1 << " " << z1 << std::endl; //sez
+                            file << x0 << " " << y0 << " " << z1 << std::endl; //iez
+                            file << x1 << " " << y0 << " " << z1 << std::endl; //idz
+                            file << x1 << " " << y1 << " " << z1 << std::endl; //sdz
+
                         }
                     }
                 }
             }
+            /*
+            float Nv[8][3] = { // PARA DEFINIR A POSIÇÃO DE CADA VÉRTICE:
+                {-1.0, -1.0,  1.0},  // P0
+                { 1.0, -1.0,  1.0},  // P1
+                { 1.0,  1.0,  1.0},  // P2
+                {-1.0,  1.0,  1.0},  // P3
+                {-1.0, -1.0, -1.0},  // P4
+                { 1.0, -1.0, -1.0},  // P5
+                { 1.0,  1.0, -1.0},  // P6
+                {-1.0,  1.0, -1.0}   // P7
+            };*/
+
+            int indices[6][4] = {
+                {0, 3, 2, 1}, //face 1
+                {4, 5, 6, 7}, //face 2
+                {0, 1, 5, 4}, //face 3
+                {0, 4, 7, 3}, //face 4
+                {7, 6, 2, 3}, //face 5
+                {1, 2, 6, 5}, //face 6
+            };
+            int auxN = 0;
+            for(int i=0; i<nx*ny*nz; i++){
+                for(int j=0; j<6; j++){
+                    file << "4 ";
+                    for(int k=0; k<4; k++){
+                        file << indices[j][k]+auxN << " ";
+                    }
+                    file << fixed << setprecision(1) << r << " " << g << " " << b << " " << a << std::endl;
+                }
+                auxN+=8;
+            }
+
+            /*
             // Escreve as coordenadas dos voxels visíveis
             for (int i = 0; i < nx; i++) {
                 for (int j = 0; j < ny; j++) {
                     for (int k = 0; k < nz; k++) {
+                        file << "4 ";
                         if (v[i][j][k].show) {
-                            file << "4 " << i << " " << j << " " << k << " " << fixed << setprecision(1) << r << " " << g << " " << b << " " << a << std::endl;
+                            while(h<4){
+
+                            }
+
+                            file << v[x][y][z] << " ";
+                            //file << "4 " << i << " " << j << " " << k << " " << fixed << setprecision(1) << r << " " << g << " " << b << " " << a << std::endl;
                         }
                     }
                 }
             }
+*/
             file.close();
 }
 
