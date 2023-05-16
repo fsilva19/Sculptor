@@ -79,6 +79,23 @@ void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
         }
     }
 }
+void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
+    //x => xcenter + radius
+    //     xcenter - radius
+    //y => ycenter + radius
+    //     ycenter - radius
+    //z => zcenter + radius
+    //     zcenter - radius
+    for(int x=(xcenter-radius); x<=(xcenter+radius); x++){
+        for(int y=(ycenter-radius); y<=(ycenter+radius); y++){
+            for(int z=(zcenter-radius); z<=(zcenter+radius); z++){
+                if((x-xcenter)*(x-xcenter) + (y-ycenter)*(y-ycenter) + (z-zcenter)*(z-zcenter) <= radius*radius){
+                    putVoxel(x,y,z);
+                }
+            }
+        }
+    }
+}
 void Sculptor::writeOFF(const char* filename){
     std::ofstream file;
     file.open(filename);
