@@ -21,25 +21,27 @@ int main()
     trono.putBox(0,9,0,9,0,9);
     trono.cutBox(1,8,1,9,1,9);
     trono.writeOFF("trono.off");
-    return 0;
-*/
+
+
     //testando sphere:
     Sculptor esfera(11,11,11);
     esfera.setColor(0.3, 0.8, 1.0, 0.0);
     esfera.putSphere(5, 5, 5, 3);
     esfera.writeOFF("esfera.off");
-}
-/*
-int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
 
-    Sculptor trono(10, 10, 10);
-    trono.setColor(0, 0, 1.0, 1.0);
-    trono.putBox(0,9,0,9,0,9);
-    /*trono.cutBox(1,8,1,9,1,9);
-trono.writeOFF("trono.off");
 
-return a.exec();
-}
+
+    Sculptor esfera(20,20,20);
+    esfera.setColor(0.3, 0.8, 1.0, 0.0);
+    esfera.putSphere(9,9,9,6);
+    esfera.cutSphere(9,9,9,3);
+    esfera.writeOFF("esfera.off");
 */
+    //testando ellipsoid:
+    Sculptor elipse(30,20,20);
+    elipse.setColor(0.6, 0.4, 1.0, 0.0);
+    elipse.putEllipsoid(15,10,10,13,5,5);
+    elipse.writeOFF("elipse.off");
+
+    return 0;
+}

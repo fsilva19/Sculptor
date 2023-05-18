@@ -96,6 +96,52 @@ void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
         }
     }
 }
+
+void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
+    for(int x=(xcenter-radius); x<=(xcenter+radius); x++){
+        for(int y=(ycenter-radius); y<=(ycenter+radius); y++){
+            for(int z=(zcenter-radius); z<=(zcenter+radius); z++){
+                if((x-xcenter)*(x-xcenter) + (y-ycenter)*(y-ycenter) + (z-zcenter)*(z-zcenter) <= radius*radius){
+                    cutVoxel(x,y,z);
+                }
+            }
+        }
+    }
+}
+/*
+void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
+    for (int x = (xcenter - rx); x<= (xcenter+rx); x++){
+        for (int y = (ycenter - ry); y<= (ycenter+ry); y++){
+            for (int z = (zcenter - rz); z<= (zcenter+rz); z++){
+                if (((((x - xcenter)*(x - xcenter))/rx) + (((y - ycenter)*(y - ycenter))/ry) + (((z - zcenter)*(z - zcenter))/rz))<=1){
+                    putVoxel(x,y,z);
+                }
+            }
+        }
+    }
+}*/
+void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
+    for (int x = (xcenter - rx); x<= (xcenter+rx); x++){
+        for (int y = (ycenter - ry); y<= (ycenter+ry); y++){
+            for (int z = (zcenter - rz); z<= (zcenter+rz); z++){
+                if (float((((x - xcenter)*(x - xcenter))/float(rx*rx)) + (((y - ycenter)*(y - ycenter))/float(ry*ry)) + (((z - zcenter)*(z - zcenter))/float(rz*rz))) <= 1.0){
+                    putVoxel(x,y,z);
+                }
+            }
+        }
+    }
+}
+void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
+    for (int x = (xcenter - rx); x<= (xcenter+rx); x++){
+        for (int y = (ycenter - ry); y<= (ycenter+ry); y++){
+            for (int z = (zcenter - rz); z<= (zcenter+rz); z++){
+                if (((((x - xcenter)*(x - xcenter))/rx) + (((y - ycenter)*(y - ycenter))/ry) + (((z - zcenter)*(z - zcenter))/rz))<=1){
+                    cutVoxel(x,y,z);
+                }
+            }
+        }
+    }
+}
 void Sculptor::writeOFF(const char* filename){
     std::ofstream file;
     file.open(filename);
