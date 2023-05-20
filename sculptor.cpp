@@ -44,12 +44,11 @@ void Sculptor::putVoxel(int x, int y, int z){
     if (x >= 0 && x < nx && y >= 0 && y < ny && z >= 0 && z < nz) {
         // condição de verificação dos limites da matriz tridimensional v antes de acessar um elemento específico.
                 // Ele garante que os índices x, y e z estejam dentro dos limites válidos da matriz antes de realizar qualquer operação.
-
-        v[x][y][z].show = true;
         v[x][y][z].r = r;
         v[x][y][z].g = g;
         v[x][y][z].b = b;
         v[x][y][z].a = a;
+        v[x][y][z].show = true;
     }
 }
 void Sculptor::cutVoxel(int x, int y, int z){
@@ -135,7 +134,9 @@ void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
     for (int x = (xcenter - rx); x<= (xcenter+rx); x++){
         for (int y = (ycenter - ry); y<= (ycenter+ry); y++){
             for (int z = (zcenter - rz); z<= (zcenter+rz); z++){
-                if (((((x - xcenter)*(x - xcenter))/rx) + (((y - ycenter)*(y - ycenter))/ry) + (((z - zcenter)*(z - zcenter))/rz))<=1){
+                if (float((((x - xcenter)*(x - xcenter))/float(rx*rx)) +
+                          (((y - ycenter)*(y - ycenter))/float(ry*ry)) +
+                          (((z - zcenter)*(z - zcenter))/float(rz*rz))) <= 1.0){
                     cutVoxel(x,y,z);
                 }
             }
