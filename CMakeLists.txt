@@ -16,6 +16,7 @@ add_executable(escultor
   main.cpp
   sculptor.cpp
   sculptor.h
+  voxel.h
 )
 target_link_libraries(escultor Qt${QT_VERSION_MAJOR}::Core)
 

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+
 using namespace std;
 
 Sculptor::Sculptor(int _nx, int _ny, int _nz){
@@ -229,16 +230,23 @@ void Sculptor::writeOFF(const char* filename){
                 {1, 2, 6, 5}, //face 6
             };
             int auxN = 0;
-            for(int i=0; i<nx*ny*nz; i++){
-                for(int j=0; j<6; j++){
-                    file << "4 ";
-                    for(int k=0; k<4; k++){
-                        file << indices[j][k]+auxN << " ";
+            for (int x = 0; x < nx; x++) {
+                for (int y = 0; y < ny; y++) {
+                    for (int z = 0; z < nz; z++) {
+                        if (v[x][y][z].show) {
+                            for(int j=0; j<6; j++){
+                                file << "4 ";
+                                for(int k=0; k<4; k++){
+                                    file << indices[j][k]+auxN << " ";
+                                }
+                                file << fixed << setprecision(1) << v[x][y][z].r << " " << v[x][y][z].g << " " << v[x][y][z].b << " " << v[x][y][z].a << std::endl;
+                            }
+                            auxN+=8;
+                        }
                     }
-                    file << fixed << setprecision(1) << r << " " << g << " " << b << " " << a << std::endl;
                 }
-                auxN+=8;
             }
+
 
             /*
             // Escreve as coordenadas dos voxels visíveis

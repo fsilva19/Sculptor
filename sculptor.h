@@ -1,13 +1,10 @@
-#ifndef SCULPTOR_H
-#define SCULPTOR_H
-#include <iostream>
-using namespace std;
+#ifndef SCULPTOR_H_
+#define SCULPTOR_H_
 
-struct Voxel {
-    float r,g,b; // Cores
-    float a; // Trasnparencia
-    bool show; // Incluido ou nao
-};
+#include "voxel.h"
+#include <iostream>
+
+using namespace std;
 
 class Sculptor {
 private:
@@ -28,5 +25,4 @@ public:
     void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
     void writeOFF(const char* filename);
 };
-
-#endif // SCULPTOR_H
+#endif
