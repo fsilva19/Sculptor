@@ -31,12 +31,12 @@ Sculptor::~Sculptor(){
     }
     delete []v; //deleta a memória de uma dimensão
 }
-void Sculptor::setColor(float red, float green, float blue, float alpha){
+void Sculptor::setColor(float r, float g, float b, float a){
     //Altera os respectivos valores de r, g, b e a na classe Sculptor
-    r = red;
-    g = green;
-    b = blue;
-    a = alpha;
+    this->r = r;
+    this->g = g;
+    this->b = b;
+    this->a = a;
 }
 void Sculptor::putVoxel(int x, int y, int z){
     // A função putVoxel da classe Sculptor é responsável por ativar (ou "colocar") um voxel
@@ -108,18 +108,6 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
         }
     }
 }
-/*
-void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
-    for (int x = (xcenter - rx); x<= (xcenter+rx); x++){
-        for (int y = (ycenter - ry); y<= (ycenter+ry); y++){
-            for (int z = (zcenter - rz); z<= (zcenter+rz); z++){
-                if (((((x - xcenter)*(x - xcenter))/rx) + (((y - ycenter)*(y - ycenter))/ry) + (((z - zcenter)*(z - zcenter))/rz))<=1){
-                    putVoxel(x,y,z);
-                }
-            }
-        }
-    }
-}*/
 void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
     for (int x = (xcenter - rx); x<= (xcenter+rx); x++){
         for (int y = (ycenter - ry); y<= (ycenter+ry); y++){
@@ -209,18 +197,6 @@ void Sculptor::writeOFF(const char* filename){
                     }
                 }
             }
-            /*
-            float Nv[8][3] = { // PARA DEFINIR A POSIÇÃO DE CADA VÉRTICE:
-                {-1.0, -1.0,  1.0},  // P0
-                { 1.0, -1.0,  1.0},  // P1
-                { 1.0,  1.0,  1.0},  // P2
-                {-1.0,  1.0,  1.0},  // P3
-                {-1.0, -1.0, -1.0},  // P4
-                { 1.0, -1.0, -1.0},  // P5
-                { 1.0,  1.0, -1.0},  // P6
-                {-1.0,  1.0, -1.0}   // P7
-            };*/
-
             int indices[6][4] = {
                 {0, 3, 2, 1}, //face 1
                 {4, 5, 6, 7}, //face 2
@@ -246,27 +222,7 @@ void Sculptor::writeOFF(const char* filename){
                     }
                 }
             }
-
-
-            /*
-            // Escreve as coordenadas dos voxels visíveis
-            for (int i = 0; i < nx; i++) {
-                for (int j = 0; j < ny; j++) {
-                    for (int k = 0; k < nz; k++) {
-                        file << "4 ";
-                        if (v[i][j][k].show) {
-                            while(h<4){
-
-                            }
-
-                            file << v[x][y][z] << " ";
-                            //file << "4 " << i << " " << j << " " << k << " " << fixed << setprecision(1) << r << " " << g << " " << b << " " << a << std::endl;
-                        }
-                    }
-                }
-            }
-*/
-            file.close();
+    file.close();
 }
 
 

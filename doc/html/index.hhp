@@ -1,0 +1,66 @@
+[OPTIONS]
+Compiled file=sculptor
+Compatibility=1.1
+Full-text search=Yes
+Contents file=index.hhc
+Default Window=main
+Default topic=index.html
+Index file=index.hhk
+Language=0x416 Portuguese(Brazil)
+Title=My Project
+
+[WINDOWS]
+main="My Project","index.hhc","index.hhk","index.html","index.html",,,,,0x23520,,0x10387e,,,,,,,,0
+
+[FILES]
+_r_e_a_d_m_e_8md.html
+annotated.html
+class_sculptor-members.html
+class_sculptor.html
+classes.html
+dir_133c3c848ab270b2b55223feb674a5f3.html
+files.html
+functions.html
+functions_func.html
+functions_vars.html
+globals.html
+globals_func.html
+index.html
+main_8cpp.html
+main_8cpp_source.html
+md__c_1_2_users_2lip-g_2_desktop_2_u_f_r_n_2_s_e_m7_2_p_a_2_p_r_o_j_e_t_o__1___p_a_2escultor_2_r_e_a_d_m_e.html
+pages.html
+sculptor_8cpp.html
+sculptor_8cpp_source.html
+sculptor_8h.html
+sculptor_8h_source.html
+struct_voxel-members.html
+struct_voxel.html
+voxel_8h.html
+voxel_8h_source.html
+bc_s.png
+bc_sd.png
+closed.png
+doxygen.svg
+nav_f.png
+nav_fd.png
+nav_g.png
+nav_h.png
+nav_hd.png
+open.png
+splitbar.png
+splitbard.png
+sync_off.png
+sync_on.png
+tab_a.png
+tab_ad.png
+tab_b.png
+tab_bd.png
+tab_h.png
+tab_hd.png
+tab_s.png
+tab_sd.png
+doxygen.css
+dynsections.js
+jquery.js
+tabs.css
